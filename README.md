@@ -86,14 +86,13 @@ flutter run -d <device-id>
 
 详细的分层规则、依赖方向与数据流见 **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**,需求背景见 **[docs/PRD.md](docs/PRD.md)**。
 
-## 七、参与开发
+## 七、测试
 
 ```bash
 flutter analyze    # 静态检查,期望 No issues found!
 flutter test       # 单元 + widget 测试,期望全部通过
 ```
 
-提交前请保证两条命令全绿。欢迎提 Issue 描述你遇到的问题或想要的功能。
 
 ## 八、许可证
 
