@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  为什么需要这个文件：
+  flutter_local_notifications 的 Android 通知小图标是**运行时按资源名**查找的
+  （插件内部走 `getIdentifier("ic_stat_loop", "drawable", packageName)`），
+  资源压缩器看不到这种字符串引用，release 构建会把它当「无用资源」删掉 ——
+  结果就是 debug 包通知图标正常、release 包里通知没有图标，且**构建不会报任何错**。
+
+  这里显式声明「不要删」，是 AGP 官方推荐的兜底做法。
+  ⚠️ 删掉本文件 = release 包的通知小图标会再次消失。
+-->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@drawable/ic_stat_loop" />

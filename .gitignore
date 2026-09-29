@@ -1,0 +1,67 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# 发布签名：密钥与口令**绝不入库**（丢了就再也无法覆盖升级，请自行离线备份）
+/android/key.properties
+/android/keystore/
+*.jks
+*.keystore
+
+# Widget Preview related
+.widget_preview/
+
+# 打包脚本（tool/package.ps1）的输出目录：带版本号的 APK 与校验文件不入库
+/dist/
+
+# 组件库 API 参考副本：仅本机自用，不入库（构建依赖 pub 上的 animal_island_flutter）
+/reference/
+
+# 运维手册：仅本机自用，不入库（含签名流程等内部信息）
+/打包与发布指南.md
+
+# 内部过程文档（任务台账 / 验收记录）：仅本机自用，不入库
+/docs/PLAN.md
+/docs/ACCEPTANCE.md

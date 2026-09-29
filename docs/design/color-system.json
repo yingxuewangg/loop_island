@@ -1,0 +1,67 @@
+{
+  "name": "循环小岛 · 色彩系统",
+  "version": "1.0",
+  "colors": {
+    "brand": {
+      "primary": "#17B5CE",
+      "primaryDark": "#0E9CB4",
+      "primaryDarker": "#0A7F94",
+      "primaryLight": "#4FD3E4",
+      "primaryFaint": "#DCF6FA"
+    },
+    "mint": {
+      "primary": "#3FCF9E",
+      "dark": "#2BB486",
+      "faint": "#DDF7EC"
+    },
+    "sand": {
+      "primary": "#F2C078",
+      "dark": "#D9A255",
+      "faint": "#FDF2DF"
+    },
+    "coral": {
+      "primary": "#F0816E",
+      "dark": "#D9553D",
+      "faint": "#FDE8E3"
+    },
+    "neutral": {
+      "bg": "#F0F6F7",
+      "bgWarm": "#FBF8F4",
+      "surface": "#FFFFFF",
+      "line": "#E3EFF2",
+      "lineSoft": "#EFF6F8",
+      "ink900": "#16323A",
+      "ink700": "#2E4F59",
+      "ink500": "#6B8A93",
+      "ink300": "#A9BFC6"
+    },
+    "gradient": {
+      "brand": "linear-gradient(120deg, #3FCF9E 0%, #17B5CE 100%)",
+      "brandSoft": "linear-gradient(120deg, #E4F9F1 0%, #DCF6FA 100%)",
+      "sand": "linear-gradient(120deg, #FDF2DF 0%, #FBF0E2 100%)"
+    },
+    "semantic": {
+      "done": { "bg": "#DDF7EC", "text": "#2BB486" },
+      "pending": { "bg": "#EAF2F4", "text": "#5F7F88" },
+      "missed": { "bg": "#FDE8E3", "text": "#D9553D" },
+      "skipped": { "bg": "#FDF2DF", "text": "#D9A255" },
+      "plan": { "bg": "#DCF6FA", "text": "#0A7F94" },
+      "active": { "bg": "#DCF6FA", "text": "#0A7F94" },
+      "paused": { "bg": "#FDF2DF", "text": "#D9A255" },
+      "archived": { "bg": "#EDF2F3", "text": "#8CA3AA" }
+    }
+  },
+  "usage": {
+    "主色": "用于按钮、进度条、选中态、品牌渐变",
+    "薄荷绿": "用于循环任务标识、成功状态、打卡",
+    "沙洲金": "用于提醒、暂停、暖色卡片",
+    "珊瑚橙": "用于未完成、删除、错误提示",
+    "中性色": "用于背景、卡片、分割线、文字层级"
+  },
+  "implementation": {
+    "tokens": "lib/app/design_tokens.dart（IslandColors / IslandTagColors）",
+    "theme": "lib/app/loop_island_app.dart（LoopIslandApp.themeData）",
+    "components": "lib/app/widgets/island_widgets.dart（IslandCard / IslandTag）",
+    "note": "组件库 animal_island_flutter 的 AnimalTagColor 语义色与 AnimalCard 底色为硬编码常量，不跟随主题，故由应用层同名等价组件渲染；圆角、阴影、间距保持原样。"
+  }
+}

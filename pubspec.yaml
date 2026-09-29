@@ -1,0 +1,87 @@
+name: loop_island
+description: "循环小岛 / Loop Island —— 无登录、本地优先的 TodoList + N 天循环计划应用。"
+# 私有应用，禁止误发布到 pub.dev
+publish_to: 'none'
+
+# 版本号：major.minor.patch+build
+# Android 使用 versionName / versionCode，iOS 使用 CFBundleShortVersionString / CFBundleVersion
+version: 1.1.0+1
+
+environment:
+  # 与 PRD / 组件库要求保持一致
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 中文本地化（Material/Cupertino 内置文案）
+  flutter_localizations:
+    sdk: flutter
+
+  # UI 组件库（动物森友会风格），仓库内 reference/animal_island_flutter 为 API 参考
+  animal_island_flutter: ^0.1.3
+
+  # 状态管理：轻量、无代码生成、易于纯 Dart 单测
+  flutter_riverpod: ^2.6.1
+
+  # 本地存储：纯 Dart KV，六端可用；模型 JSON 同时服务于存储与导入导出
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  path_provider: ^2.1.6
+
+  # 主键
+  uuid: ^4.5.3
+
+  # 集合工具：模型用 DeepCollectionEquality 实现基于 JSON 的值相等
+  collection: ^1.19.0
+
+  # 注解：模型的 @immutable（不能引 flutter/foundation，以保持 models 层零 Flutter 依赖）
+  meta: ^1.16.0
+
+  # 日期时间格式化与本地化
+  intl: ^0.20.2
+
+  # 本地通知（无服务器、无登录）
+  flutter_local_notifications: ^19.0.0
+  timezone: ^0.10.0
+
+  # 数据管理：导出备份 / 导入恢复
+  file_picker: ^8.1.7
+  share_plus: ^10.1.4
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # 图标生成器：把 assets/icon/app_icon.png 铺成各分辨率的 launcher 图标
+  # （Android 五档 mipmap + 自适应图标、Windows .ico）。
+  # 只在需要重新生成图标时用 `dart run flutter_launcher_icons`，不参与运行时。
+  flutter_launcher_icons: ^0.14.1
+  integration_test:
+    sdk: flutter
+
+# 图标生成配置（`dart run flutter_launcher_icons` 读取这一段）
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: false
+  image_path: "assets/icon/app_icon.png"
+  # 自适应图标（Android 8+）：背景铺整张图、前景留全透明，
+  # 这样图标满幅显示、不会被系统再缩到 66% 而四周留白。
+  adaptive_icon_background: "assets/icon/app_icon.png"
+  adaptive_icon_foreground: "assets/icon/foreground_transparent.png"
+  windows:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
+    icon_size: 256
+
+flutter:
+  uses-material-design: true
+
+  # 资源与字体：由 animal_island_flutter 包自带，此处无需重复声明
+  # assets:
+  #   - assets/images/
