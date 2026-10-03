@@ -5,7 +5,7 @@ publish_to: 'none'
 
 # 版本号：major.minor.patch+build
 # Android 使用 versionName / versionCode，iOS 使用 CFBundleShortVersionString / CFBundleVersion
-version: 1.1.0+1
+version: 1.1.1+1
 
 environment:
   # 与 PRD / 组件库要求保持一致

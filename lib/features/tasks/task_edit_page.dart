@@ -63,6 +63,10 @@ class _TaskEditPageState extends ConsumerState<TaskEditPage> {
   /// 用户会看到「提醒晚了几分钟」——必须在设提醒的地方就说清楚。
   bool? _exactAlarms;
 
+  /// 本次进入本页是否已经为「设了提醒但缺精确闹钟权限」跳转过系统授权页。
+  /// 只跳一次，避免反复保存时反复被拽出应用。
+  bool _exactAlarmRequested = false;
+
   bool get _isNew => widget.taskId == null;
 
   @override
@@ -120,9 +124,12 @@ class _TaskEditPageState extends ConsumerState<TaskEditPage> {
     _original = task;
 
     if (task == null) {
-      // 新建：默认安排在今天，比「无日期」更符合直觉
+      // 新建：默认安排在今天，比「无日期」更符合直觉。
+      // 状态在这里**显式**钉回待办：新建页没有任何理由带着别的状态，
+      // 显式赋值让「默认值被任何路径污染」在代码层面不可能成立。
       _dateType = TaskDateType.today;
       _date = dateOnly(today);
+      _status = TaskStatus.pending;
       return;
     }
 
@@ -454,6 +461,16 @@ class _TaskEditPageState extends ConsumerState<TaskEditPage> {
       }
       if (mounted) {
         Navigator.of(context).pop();
+      }
+      // 提醒只有在「精确闹钟」模式下才准时：非精确闹钟会被系统在批处理
+      // 窗口内提前 / 推后几分钟触发（用户实测 9:00 的提醒 8:58 就响了）。
+      // 保存的是带提醒的任务而权限又缺失时，主动带用户去开一次；
+      // 已授权 / 平台不适用 / 本次已跳转过则不打扰。
+      if (_remindAts.isNotEmpty &&
+          _exactAlarms == false &&
+          !_exactAlarmRequested) {
+        _exactAlarmRequested = true;
+        await _requestExactAlarm();
       }
     } catch (error) {
       if (mounted) {

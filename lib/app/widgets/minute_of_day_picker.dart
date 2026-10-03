@@ -15,7 +15,7 @@ class MinuteOfDayPicker extends StatelessWidget {
     required this.onChanged,
     this.enabled = true,
     this.minWidth = 88,
-    this.minuteStep = 5,
+    this.minuteStep = 1,
   });
 
   /// 当前时刻（0..1439）。
@@ -24,7 +24,7 @@ class MinuteOfDayPicker extends StatelessWidget {
   final bool enabled;
   final double minWidth;
 
-  /// 分钟粒度。
+  /// 分钟粒度（默认 1：0~59 每一分钟都可以选）。
   final int minuteStep;
 
   @override

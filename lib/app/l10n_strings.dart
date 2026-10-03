@@ -13,7 +13,7 @@ abstract final class AppInfo {
   static const appName = '循环小岛';
   static const appNameEn = 'Loop Island';
   static const tagline = '按周期循环执行你的计划';
-  static const version = '1.0.3';
+  static const version = '1.1.1';
 }
 
 /// 底部 Tab 名称。
